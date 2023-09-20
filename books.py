@@ -28,3 +28,11 @@ async def get_book(id: str):
     for book in BOOKS:
         if id == book['id']:
             return book
+        
+@app.get("/books/")
+async def query_by_category(category:str):
+    selectedBooks = []
+    for book in BOOKS:
+        if book.get('category') == category:
+            selectedBooks.append(book)
+    return selectedBooks
